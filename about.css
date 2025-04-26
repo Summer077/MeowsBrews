@@ -1,0 +1,193 @@
+body {
+    font-family: "Nunito Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('/img/bgs.png') no-repeat center center/cover;
+    color: #ffffff;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.about-section {
+    padding: 60px 5%;
+    position: relative;
+}
+
+.about-title {
+    width: 70%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.about-title::after {
+    content: "ABOUT US";
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: rgba(0, 0, 0, 0.1);
+    filter: blur(1px);
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    flex-wrap: wrap;
+    margin-top: -60px;
+}
+
+.circle {
+    position: absolute;
+    width: 500px;  /* Increase size of c1.png and c2.png */
+    height: 500px;  /* Increase size of c1.png and c2.png */
+    background-color: #f8b6c1;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.left-circle {
+    top: 60%;
+    left: 10%;    /* Adjust to keep aligned with larger size */
+    transform: translateY(-50%);
+    background-image: url('/img/c1.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.right-circle {
+    top: 40%;
+    right: 10%;   /* Adjust to keep aligned with larger size */
+    transform: translateY(-50%);
+    background-image: url('/img/c2.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.about-left {
+    position: absolute;
+    top: 47%;
+    transform: translateY(-50%);
+    max-width: 350px;  /* Increase width to accommodate larger text */
+    color: #000;
+    z-index: 1;
+    text-align: right;  /* Left-align the text */
+    padding-left: 20px;
+}
+
+.about-right {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    max-width: 350px;  /* Increase width to accommodate larger text */
+    color: #000;
+    z-index: 1;
+    text-align: left;  /* Left-align the text */
+    padding-left: 20px;
+}
+
+
+.about-left {
+    left: 15%;   /* Align with the left-circle */
+}
+
+.about-right {
+    right: 16%;  /* Align with the right-circle */
+}
+
+.shop-image {
+    max-width: 600px;  /* Increase the size of the shop image */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: -30px;
+}
+
+.team-section {
+    margin-top: -70px; /* Reduce the top margin to bring the section closer */
+    padding: 30px 10%;
+  }
+
+.team-title {
+    font-size: 2.5rem;
+    color: #d53f8c;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.team-subtext {
+    font-size: 0.95rem;
+    color: #fff;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Reduce the gap between the images */
+    padding-bottom: 20px;
+    margin-top: -20px; /* Pull the images closer to the shop image */
+  }
+
+  .team-member {
+    text-align: center;
+    position: relative;
+    width: 150px;
+  }  
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.team-member h3 {
+    margin-top: 10px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.team-member p {
+    font-size: 0.85rem;
+    color: #fff;
+}
+
+.team-member::before {
+    content: "";
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 30px;
+    background: url('/img/catears.png') no-repeat center/contain;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-circle,
+    .right-circle {
+        display: none;
+    }
+
+    .shop-image {
+        max-width: 550px;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        margin-top: -40px; /* Further adjust margin to bring shop image closer */
+      }
+}
