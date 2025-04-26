@@ -11,6 +11,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #e9cdb9;
   background-image: url('reg/bg.png');
   background-size: cover;
   background-position: center;
@@ -25,7 +26,7 @@ body {
   gap: 8px;
   padding: 10px 20px;
   border: 1px solid #FFFFFF;
-  background: rgba(240, 128, 128, 0.2);
+  background: #432818;
   backdrop-filter: blur(5px);
   border-radius: 25px;
   text-decoration: none;
@@ -34,7 +35,7 @@ body {
 }
 
 .back-home:hover {
-  background: rgba(240, 128, 128, 0.3);
+  background: #5e3721;
   transform: translateX(-5px);
 }
 
@@ -60,25 +61,25 @@ body {
   background-size: 100% 100%;
   border-radius: 20px;
   padding: 30px;
-  padding-top: 60px;
+  padding-top: 50px;
   backdrop-filter: blur(10px);
-  min-height: 520px;
+  min-height: 480px;
 }
 
 .cat-image {
   position: absolute;
-  top: -120px; 
+  top: -122px;
   left: 50%;
   transform: translateX(-50%);
-  width: 200px; 
+  width: 200px;
   height: auto;
 }
 
 .buttons {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-between;
   margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .tab {
@@ -90,10 +91,17 @@ body {
   font-size: 16px;
   font-weight: 500;
   transition: all 0.3s ease;
+  width: 50%;
+  text-align: center;
 }
 
 .tab.active {
-  border-bottom: 2px solid #F08080;
+  border-bottom: 3px solid #432818;
+}
+
+.tab:hover {
+  color: #432818;
+  transform: scale(1.05);
 }
 
 h2 {
@@ -102,6 +110,16 @@ h2 {
   margin-bottom: 20px;
   font-size: 1.2em;
   font-weight: 500;
+}
+
+.form-section {
+  margin-bottom: 15px;
+}
+
+.section-title {
+  font-size: 0.9em;
+  margin-bottom: 5px;
+  color: #432818;
 }
 
 input[type="text"],
@@ -114,41 +132,37 @@ input[type="password"] {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.9);
   font-size: 14px;
-  color: #F08080;
+  color: #432818;
+}
+
+input::placeholder {
+  color: #999;
 }
 
 .checkbox-group {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .checkbox-group label {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  margin-bottom: 10px;
-  color: #FFFFFF;
+  color: #432818;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.checkbox-group span a {
+  color: #432818;
+  text-decoration: underline;
 }
 
 input[type="checkbox"] {
   appearance: none;
   width: 18px;
   height: 18px;
-  border: 2px solid #F08080;
-  border-radius: 4px;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: transparent;
-}
-
-input[type="checkbox"] {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #F08080;
+  border: 2px solid #432818;
   border-radius: 4px;
   position: relative;
   cursor: pointer;
@@ -171,18 +185,13 @@ input[type="checkbox"]::after {
 
 input[type="checkbox"]:checked {
   border-color: #FFFFFF;
-  background: rgba(240, 128, 128, 0.5);
+  background: #432818;
   animation: bounce 0.3s ease forwards;
 }
 
 input[type="checkbox"]:checked::after {
   opacity: 1;
   transform: scale(1);
-}
-
-.checkbox-group label:hover input[type="checkbox"] {
-  transform: scale(1.1);
-  border-color: #FFFFFF;
 }
 
 @keyframes bounce {
@@ -193,83 +202,61 @@ input[type="checkbox"]:checked::after {
 
 .submit-btn {
   display: block;
-  margin: 10px auto;
+  margin: 20px auto 10px;
   width: 90%;
-  padding: 10px;
-  border: 1px solid #FFFFFF;
+  padding: 12px;
+  border: none;
   border-radius: 20px;
-  background: #F08080;
+  background: #432818;
   color: #FFFFFF;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
 }
 
 .submit-btn:hover {
-  background: rgba(240, 128, 128, 0.8);
+  background: #5e3721;
   transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(240, 128, 128, 0.4);
+  box-shadow: 0 4px 10px rgba(94, 55, 33, 0.5);
 }
 
-.social-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.social-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+.password-container {
+  position: relative;
   width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  margin-bottom: 15px;
 }
 
-.social-btn img {
+.password-container input {
+  margin-bottom: 0;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 12px;
   width: 20px;
   height: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
 }
 
-.social-btn.facebook {
-  background: #4267B2;
-  color: #FFFFFF;
+.eye-icon:hover {
+  opacity: 1;
 }
 
-.social-btn.google {
-  background: #333;
-  color: #FFFFFF;
+.forgot-password {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #432818;
+  cursor: pointer;
+  text-decoration: none;
 }
 
-.social-btn {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.social-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-}
-
-.social-btn.facebook:hover {
-  background: #385898;
-  box-shadow: 0 0 10px rgba(66, 103, 178, 0.6);
-}
-
-.social-btn.google:hover {
-  background: #444;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+.forgot-password:hover {
+  text-decoration: underline;
 }
 
 .hidden {
@@ -292,55 +279,4 @@ input[type="checkbox"]:checked::after {
       padding: 8px 16px;
       font-size: 14px;
   }
-}
-
-.tab {
-  padding: 10px 20px;
-  border: none;
-  background: transparent;
-  color: #FFFFFF;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.tab.active {
-  border-bottom: 2px solid #F08080;
-}
-
-.tab:hover {
-  color: #F08080;
-  transform: scale(1.05);
-}
-.password-container {
-  position: relative;
-  width: 100%;
-}
-
-.password-container input {
-  width: 100%;
-  padding: 12px;
-  padding-right: 40px; 
-  border: none;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 14px;
-  color: #F08080;
-}
-
-.eye-icon {
-  position: absolute;
-  right: 10px;
-  top: 40%;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
-}
-
-.eye-icon:hover {
-  opacity: 1;
 }

@@ -357,11 +357,7 @@ main {
 
 /* Fix item positioning and display */
 .coffee-item {
-  position: absolute;
-  width: 300px;
-  height: 350px;
-  transition: all 0.5s ease;
-  display: none; /* Hide by default */
+  display: none;
 }
 
 .coffee-item.active {
@@ -504,10 +500,6 @@ main {
 /* Show items for the active category only */
 .coffee-item {
   display: none;
-}
-
-.coffee-item.category-active {
-  display: none; /* Change from 'block' to 'none' */
 }
 
 /* Only show items that are both category-active AND active in carousel */
