@@ -36,25 +36,21 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // First, hide ALL items and remove active classes
+    // First, hide ALL items and remove all classes
     coffeeItems.forEach((item) => {
       item.classList.remove("category-active", "active", "middle");
       item.style.display = "none";
     });
 
-    // Then, add category-active class only to the current category items
-    document
-      .querySelectorAll(`.coffee-item[data-category="${category}"]`)
-      .forEach((item) => {
-        item.classList.add("category-active");
-      });
-
-    // Update items array with ONLY current category items
+    // Then, find and mark items of the current category
     items = Array.from(
-      document.querySelectorAll(
-        `.coffee-item[data-category="${currentCategory}"]`
-      )
+      document.querySelectorAll(`.coffee-item[data-category="${category}"]`)
     );
+    
+    // Add category-active class to current category items
+    items.forEach(item => {
+      item.classList.add("category-active");
+    });
 
     // Make sure we have items to display
     if (items.length === 0) {
