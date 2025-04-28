@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Get all required elements
+  // Coffee Menu Carousel Code
   const categoryButtons = document.querySelectorAll(".category");
   const coffeeItems = document.querySelectorAll(".coffee-item");
   const coffeeMenu = document.querySelector(".coffee-menu");
@@ -7,14 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextButton = document.querySelector(".carousel-nav.next");
   const dots = document.querySelectorAll(".dot");
   const favoriteButtons = document.querySelectorAll(".favorite-btn");
-
-  // Variables to track current state
   let currentCategory = "coffee";
   let currentSlideIndex = 0;
-  let itemsPerCategory = {}; // Store items count for each category
+  let itemsPerCategory = {};
   let items = [];
 
-  // Count items per category
   categoryButtons.forEach((btn) => {
     const category = btn.getAttribute("data-category");
     itemsPerCategory[category] = document.querySelectorAll(
@@ -22,12 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
     ).length;
   });
 
-  // Function to update active category
   function updateCategory(category) {
     currentCategory = category;
-    currentSlideIndex = 0; // Reset slide index when changing categories
+    currentSlideIndex = 0;
 
-    // Update active class on category buttons
     categoryButtons.forEach((btn) => {
       if (btn.getAttribute("data-category") === category) {
         btn.classList.add("active");
@@ -36,23 +31,19 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // First, hide ALL items and remove all classes
     coffeeItems.forEach((item) => {
       item.classList.remove("category-active", "active", "middle");
       item.style.display = "none";
     });
 
-    // Then, find and mark items of the current category
     items = Array.from(
       document.querySelectorAll(`.coffee-item[data-category="${category}"]`)
     );
-    
-    // Add category-active class to current category items
+
     items.forEach(item => {
       item.classList.add("category-active");
     });
 
-    // Make sure we have items to display
     if (items.length === 0) {
       console.log("No items found for category:", category);
     } else {
@@ -63,24 +54,20 @@ document.addEventListener("DOMContentLoaded", function () {
     updateDots();
   }
 
-  // Function to move the carousel
   function updateCarousel() {
     if (items.length === 0) return;
 
-    // Reset all items to normal size and opacity
     items.forEach((item) => {
       item.classList.remove("active", "middle");
       item.style.transform = "scale(1)";
       item.style.opacity = "0.7";
       item.style.zIndex = "1";
-      item.style.display = "none"; // Hide all first
+      item.style.display = "none";
     });
 
-    // Calculate indices for the 3 visible items with wrapping
     const prevIndex = (currentSlideIndex - 1 + items.length) % items.length;
     const nextIndex = (currentSlideIndex + 1) % items.length;
 
-    // Make the three items visible and set middle one to be larger
     if (items[prevIndex]) {
       items[prevIndex].classList.add("active");
       items[prevIndex].style.display = "block";
@@ -105,15 +92,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Function to update pagination dots
   function updateDots() {
     if (items.length === 0) return;
 
-    // Always show exactly 5 dots regardless of item count
     for (let i = 0; i < dots.length; i++) {
       if (i < 5) {
         dots[i].style.display = "inline-block";
-        // Calculate which dot should be active based on modulo position
         const dotPosition = Math.floor(currentSlideIndex % 5);
         dots[i].classList.toggle("active", i === dotPosition);
       } else {
@@ -122,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Add event listeners for category buttons
   categoryButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const category = btn.getAttribute("data-category");
@@ -130,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Add event listeners for carousel navigation
   prevButton.addEventListener("click", () => {
     if (items.length === 0) return;
     currentSlideIndex = (currentSlideIndex - 1 + items.length) % items.length;
@@ -145,11 +127,9 @@ document.addEventListener("DOMContentLoaded", function () {
     updateDots();
   });
 
-  // Add event listeners for pagination dots
   dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
       if (items.length > 0) {
-        // Calculate the appropriate slide based on dot index and current position
         const currentPage = Math.floor(currentSlideIndex / 5);
         currentSlideIndex = (currentPage * 5 + index) % items.length;
         updateCarousel();
@@ -158,25 +138,123 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Add event listeners for favorite buttons
   favoriteButtons.forEach((btn) => {
     btn.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevent any default behavior
+      e.preventDefault();
       this.classList.toggle("active");
-
-      // Get the SVG element
       const svg = this.querySelector("svg");
-
       if (this.classList.contains("active")) {
-        // If favorited, fill the heart with white
         svg.setAttribute("fill", "white");
       } else {
-        // If unfavorited, remove the fill
         svg.setAttribute("fill", "none");
       }
     });
   });
 
-  // Initialize with default category
   updateCategory(currentCategory);
+
+  // Testimonial Carousel Code
+  const carousel = document.querySelector('.testimonial-carousel');
+  const container = document.querySelector('.testimonial-carousel-container');
+  const slidesNodeList = document.querySelectorAll('.testimonial-slide');
+  const testimonialSection = document.querySelector('.testimonials');
+  const originalSlides = Array.from(slidesNodeList);
+  const slideCount = originalSlides.length;
+  const slideWidth = originalSlides[0].offsetWidth;
+  const slideGap = 30;
+  const totalSlideWidth = slideWidth + slideGap;
+
+  document.querySelectorAll('.testimonial-slide.clone').forEach(clone => clone.remove());
+
+  for (let i = 0; i < slideCount; i++) {
+    const endClone = originalSlides[i].cloneNode(true);
+    endClone.classList.add('clone');
+    carousel.appendChild(endClone);
+
+    const startClone = originalSlides[slideCount - 1 - i].cloneNode(true);
+    startClone.classList.add('clone');
+    carousel.insertBefore(startClone, carousel.firstChild);
+  }
+
+  let position = -slideCount * totalSlideWidth;
+  carousel.style.transform = `translateX(${position}px)`;
+
+  let animationId = null;
+  let isPaused = false;
+  let lastTimestamp = 0;
+
+  function resetPosition() {
+    const currentSlideIndex = Math.round(Math.abs(position) / totalSlideWidth) % (slideCount * 3);
+
+    if (currentSlideIndex >= slideCount * 2) {
+      const newPosition = -((currentSlideIndex - slideCount) * totalSlideWidth);
+      position = newPosition;
+      carousel.style.transition = 'none';
+      carousel.style.transform = `translateX(${position}px)`;
+      void carousel.offsetWidth;
+      carousel.style.transition = 'transform 0.5s ease';
+    } else if (currentSlideIndex < slideCount) {
+      const newPosition = -((currentSlideIndex + slideCount) * totalSlideWidth);
+      position = newPosition;
+      carousel.style.transition = 'none';
+      carousel.style.transform = `translateX(${position}px)`;
+      void carousel.offsetWidth;
+      carousel.style.transition = 'transform 0.5s ease';
+    }
+  }
+
+  function moveCarousel(timestamp) {
+    if (!lastTimestamp || timestamp - lastTimestamp > 100) {
+      lastTimestamp = timestamp;
+      animationId = requestAnimationFrame(moveCarousel);
+      return;
+    }
+
+    if (!isPaused) {
+      const elapsed = timestamp - lastTimestamp;
+      const pixelsToMove = 0.25 * (elapsed / 16.67);
+      position -= pixelsToMove;
+      carousel.style.transform = `translateX(${position}px)`;
+
+      if (Math.random() < 0.05) {
+        resetPosition();
+      }
+    }
+
+    lastTimestamp = timestamp;
+    animationId = requestAnimationFrame(moveCarousel);
+  }
+
+  carousel.style.transition = 'transform 0.5s ease';
+
+  setTimeout(() => {
+    lastTimestamp = 0;
+    animationId = requestAnimationFrame(moveCarousel);
+  }, 100);
+
+  testimonialSection.addEventListener('mouseenter', () => {
+    isPaused = true;
+  });
+
+  testimonialSection.addEventListener('mouseleave', () => {
+    isPaused = false;
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    } else if (!animationId) {
+      lastTimestamp = 0;
+      animationId = requestAnimationFrame(moveCarousel);
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    const newSlideWidth = originalSlides[0].offsetWidth;
+    const newTotalSlideWidth = newSlideWidth + slideGap;
+    const currentSlideIndex = Math.round(Math.abs(position) / totalSlideWidth);
+    position = -(currentSlideIndex * newTotalSlideWidth);
+    carousel.style.transform = `translateX(${position}px)`;
+  });
 });
