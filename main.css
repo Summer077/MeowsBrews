@@ -791,3 +791,192 @@ footer {
     text-align: center;
   }
 }
+
+/* Our Story Section Styles */
+.about-section {
+  position: relative;
+  width: 100%;
+  padding: 80px 0;
+  color: #FEFAE0;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-family: 'Orelega One', serif;
+  font-size: 42px;
+  margin-bottom: 30px;
+  color: #472f1c;
+  text-transform: uppercase;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+}
+
+.about-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.mission-statement {
+  max-width: 700px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+.story-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-image: url('/story/ourstory.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+.story-column {
+  flex: 0 0 48%;
+  margin-bottom: 40px;
+  text-align: left;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.story-column p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .story-column {
+    flex: 0 0 100%;
+  }
+  
+  .about-section h2 {
+    font-size: 32px;
+  }
+}
+
+/* Original CSS for the about image and button */
+.about-image {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.about-image img {
+  width: 100%;
+  display: block;
+  border-radius: 15px;
+}
+
+/* Our Story Section Styles */
+.about-section {
+  position: relative;
+  width: 100%;
+  padding: 60px 0;
+  text-align: center;
+  color: #472f1c;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.about-section h2 {
+  font-family: 'Orelega One', serif;
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #472f1c;
+  text-transform: uppercase;
+}
+
+.about-intro {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+}
+
+.about-intro p {
+  font-size: 17px;
+  line-height: 1.7;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #472f1c;
+}
+
+.story-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-image: url('/story/ourstory.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  padding: 40px 20px;
+  position: relative;
+}
+
+/* Semi-transparent overlay to improve text readability */
+.story-columns::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.story-column {
+  flex: 0 0 48%;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 30px;
+}
+
+.column-content {
+  padding: 30px;
+  border-radius: 8px;
+  color: #FEFAE0;
+  text-align: left;
+  height: 100%;
+}
+
+.story-column p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .story-column {
+    flex: 0 0 100%;
+  }
+  
+  .about-section h2 {
+    font-size: 32px;
+  }
+  
+  .column-content {
+    padding: 20px;
+  }
+}
+
