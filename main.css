@@ -518,7 +518,7 @@ main {
 /* Testimonials Section */
 .testimonials {
   padding: 80px 0;
-  background: url('testimonialtestimonial-bg.png') center/cover no-repeat;
+  background: url('testimonial/testimonial-bg.png') center/cover no-repeat;
   color: #fff;
   width: 100%;
   margin: 60px 0;
@@ -834,7 +834,7 @@ footer {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
-  background-image: url('/story/ourstory.png');
+  background-image: url('story/ourstory.png');
   background-size: cover;
   background-position: center;
   border-radius: 10px;
@@ -923,7 +923,7 @@ footer {
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  background-image: url('/story/ourstory.png');
+  background-image: url('story/ourstory.png');
   background-size: cover;
   background-position: center;
   border-radius: 10px;
